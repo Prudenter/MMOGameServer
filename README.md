@@ -1,0 +1,2 @@
+# MMOGameServer
+一个基于ZinxServerFramework框架开发的MMO类型的游戏服务器。
