@@ -7,7 +7,7 @@ message Person{
     int32 age = 2;                   //在go中就是一个uint32类型
     repeated string emails = 3;      //在go中就是一个[]string 邮件的集合
     repeated PhoneNumber phones = 4; //手机号,嵌套的message
-    oneof Data{
+    oneof Data{                      //类似于go中的interface,但是每次只能实现其中一个类型
         string school = 5;
         uint32 socre = 6;
     }

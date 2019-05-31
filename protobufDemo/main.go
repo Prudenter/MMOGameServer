@@ -1,7 +1,6 @@
 /**
 * @Author: ASlowPerson  
 * @Date: 19-5-29 上午10:24
-* @mail:18706733725@163.com
 */
 
 package main
@@ -36,14 +35,17 @@ func main() {
 			School:"xiangongye",
 		},
 	}
+
 	//将一个protobuf结构体对象 转化成二进制数据
 	//任何proto message结构体 在go中他们都是基础Message接口的
+
 	//编码
 	data, err := proto.Marshal(person)
 	if err != nil {
 		fmt.Println("marshal err", err)
 		return
 	}
+
 	//data就是我们要刚给对端发送的二进制数据
 	//解码
 	newPerson := &pb.Person{}
