@@ -20,6 +20,10 @@ func OnConnectionAdd(conn zinxInterface.InterfaceConnection) {
 	p.ReturnPid()
 	//给客户端发送一个msgID:200的消息
 	p.ReturnPlayerPosition()
+
+	//玩家上线成功了,将玩家对象添加到世界管理器中
+	core.WorldMgrObj.AddPlayer(p)
+	fmt.Println("----> player ID = ", p.Pid, "Online...", ", Player num = ", len(core.WorldMgrObj.Players))
 }
 
 func main() {
