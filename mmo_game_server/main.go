@@ -8,12 +8,18 @@ import (
 	"ZinxServerFramework/zinx/zinxNet"
 	"ZinxServerFramework/zinx/zinxInterface"
 	"fmt"
+	"MMOGameServer/mmo_game_server/core"
 )
 
 //当前客户端建立链接之后触发Hook函数
 func OnConnectionAdd(conn zinxInterface.InterfaceConnection) {
 	fmt.Println("conn Add..")
-
+	//创建一个玩家 将链接和玩家模块绑定
+	p := core.NewPlayer(conn)
+	//给客户端发送一个msgID:1的消息
+	p.ReturnPid()
+	//给客户端发送一个msgID:200的消息
+	p.ReturnPlayerPosition()
 }
 
 func main() {

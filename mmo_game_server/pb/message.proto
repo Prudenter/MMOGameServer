@@ -9,7 +9,7 @@ message SyncPid{
 //返回给上线玩家初始的坐标
 message BroadCast{
     int32 Pid=1;
-    int32 Tp=2; ////Tp: 1 世界聊天, 2 坐标, 3 动作, 4 移动之后坐标信息更新
+    int32 Tp=2; //Tp: 1 世界聊天, 2 坐标, 3 动作, 4 移动之后坐标信息更新
     oneof Data{
         string Content=3;
         Position P=4;
