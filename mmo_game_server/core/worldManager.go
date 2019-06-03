@@ -74,13 +74,21 @@ func (wm *WorldManager) RemovePlayerByPid(pid int32) {
 }
 
 //通过一个玩家Id得到一个Player对象
-func (wm *WorldManager) GetPlayerByPid(pid int32) []*Player {
+func (wm *WorldManager) GetPlayerByPid(pid int32) *Player {
+	wm.pLock.RLock()
+	p := wm.Players[pid]
+	wm.pLock.RUnlock()
+	return p
+}
+
+//获取全部的在线玩家集合
+func (wm *WorldManager) GetAllPlayers() []*Player {
 	wm.pLock.RLock()
 	defer wm.pLock.RUnlock()
-	players := make([]*Player,0)
+	players := make([]*Player, 0)
 	//将世界管理器的player对象加入到返回的切片中
-	for _,player := range wm.Players{
-		players = append(players,player)
+	for _, player := range wm.Players {
+		players = append(players, player)
 	}
 	return players
 }
